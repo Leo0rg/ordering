@@ -1,7 +1,5 @@
 'use client';
 
-import { useState } from 'react';
-
 interface TimeSlotsProps {
   onSelectTime: (time: string | null) => void;
   selectedTime: string | null;
@@ -13,28 +11,28 @@ export default function TimeSlots({ onSelectTime, selectedTime, selectedDate }: 
   const morningSlots = ['9:00', '10:00', '11:00', '12:00'];
   const afternoonSlots = ['13:00', '14:00', '15:00', '16:00'];
   const eveningSlots = ['17:00', '18:00', '19:00', '20:00'];
-  
+
   // Рандомно блокируем некоторые слоты для демонстрации
   const getAvailability = (date: Date | null, slot: string): boolean => {
     if (!date) return false;
-    
+
     const dateSeed = date.getDate() + date.getMonth();
     const slotIndex = parseInt(slot.split(':')[0]);
-    
+
     // Генерируем псевдо-случайный результат, но стабильный для конкретной даты и слота
     return (dateSeed + slotIndex) % 5 !== 0;
   };
-  
+
   const handleSelectTime = (time: string) => {
     onSelectTime(selectedTime === time ? null : time);
   };
-  
+
   return (
     <div className="border border-black dark:border-white rounded-xl overflow-hidden shadow-sm">
       <div className="p-4 border-b border-black dark:border-white font-bold">
         Доступное время
       </div>
-      
+
       {!selectedDate ? (
         <div className="p-4 text-center">Пожалуйста, выберите дату</div>
       ) : (
@@ -61,7 +59,7 @@ export default function TimeSlots({ onSelectTime, selectedTime, selectedDate }: 
               })}
             </div>
           </div>
-          
+
           <div className="mb-4">
             <div className="font-bold mb-2">День</div>
             <div className="grid grid-cols-4 gap-2">
@@ -84,7 +82,7 @@ export default function TimeSlots({ onSelectTime, selectedTime, selectedDate }: 
               })}
             </div>
           </div>
-          
+
           <div>
             <div className="font-bold mb-2">Вечер</div>
             <div className="grid grid-cols-4 gap-2">

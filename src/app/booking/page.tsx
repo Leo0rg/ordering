@@ -4,9 +4,8 @@ import BookingForm from '../components/booking/BookingForm';
 export default async function BookingPage({
   searchParams,
 }: {
-  searchParams: { [key: string]: string | string[] | undefined };
+  searchParams: Promise<Record<string, string | string[] | undefined>>
 }) {
-  // Получаем предварительно выбранную услугу или специалиста из URL параметров
   const params = await searchParams;
   const preselectedService = typeof params.service === 'string' ? params.service : undefined;
   const preselectedSpecialist = typeof params.specialist === 'string' ? params.specialist : undefined;

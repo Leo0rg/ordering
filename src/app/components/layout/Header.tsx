@@ -1,12 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import ThemeToggle from './ThemeToggle';
 
 const cities = [
-  'Москва', 'Санкт-Петербург', 'Новосибирск', 'Екатеринбург', 
+  'Москва', 'Санкт-Петербург', 'Новосибирск', 'Екатеринбург',
   'Казань', 'Нижний Новгород', 'Челябинск', 'Самара'
 ];
 
@@ -27,15 +26,15 @@ export default function Header() {
         <div className="flex items-center justify-between">
           {/* Левая секция с логотипом и городом */}
           <div className="flex items-center gap-4">
-            <Link 
-              href="/" 
+            <Link
+              href="/"
               className="text-lg font-black tracking-tight transition-transform duration-300 hover:scale-105"
             >
               BOOKING.IO
             </Link>
-            
+
             <div className="relative hidden sm:block">
-              <select 
+              <select
                 value={selectedCity}
                 onChange={(e) => setSelectedCity(e.target.value)}
                 className="appearance-none bg-transparent border-2 border-black dark:border-white rounded-3xl px-4 py-2 pr-8 focus:outline-none text-sm transition-all duration-300 hover:shadow-sm"
@@ -81,7 +80,7 @@ export default function Header() {
                 </svg>
               </button>
             </div>
-            
+
             <ThemeToggle />
 
             {/* Кнопка мобильного меню */}
@@ -117,10 +116,10 @@ export default function Header() {
                   {link.name}
                 </Link>
               ))}
-              
+
               <div className="sm:hidden pt-4">
                 <label className="block text-sm font-medium mb-2">Выберите город</label>
-                <select 
+                <select
                   value={selectedCity}
                   onChange={(e) => setSelectedCity(e.target.value)}
                   className="w-full appearance-none bg-transparent border-2 border-black dark:border-white rounded-3xl px-4 py-2 focus:outline-none transition-all duration-300"
@@ -130,7 +129,7 @@ export default function Header() {
                   ))}
                 </select>
               </div>
-              
+
               <div className="sm:hidden pt-2">
                 <label className="block text-sm font-medium mb-2">Поиск</label>
                 <div className="relative">
